@@ -1,0 +1,16 @@
+{
+  "name": "databases",
+  "version": "1.0.0",
+  "description": "Estudos com mongoose",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon script.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^7.1.1",
+    "nodemon": "^2.0.22"
+  }
+}
