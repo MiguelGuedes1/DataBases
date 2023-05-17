@@ -7,30 +7,35 @@ mongoose.connect('mongodb://127.0.0.1:27017/funcionariosdb')
 .catch(err=>console.error("Connection failed"))
 
 // metodo 1 para criar uma user para o banco de dados
+
 funcionario1()
 async function funcionario1(){
-    const funcionario_1=new user({
-        name: "Miguel",
-        idade:32,
-        trabalho:"Developer",
-        salario:1500
+    const funcionario1=await user.create({
+        name: "Mike Guedes",
+        idade:33,
+        trabalho:"FullStack Dev",
+        email:"teste@hotmail.com",
+        salario:1300 
     })
-    await funcionario_1.save()
-    console.log(funcionario_1)
+    //funcionario1.salario=2000   // para dar update a um dado previamente criado
+    //await funcionario1.save()   // para para gravar a alteraçao do update
+    console.log(funcionario1)
 }
 
-funcionario2()
-async function funcionario2(){
-    const funcionario_2=new user({
-        name: "Maria",
-        idade:52,
-        trabalho:"Directora",
-        salario:3900
-    })
-    await funcionario_2.save()
-    console.log(funcionario_2)
-}
 
+// para encontrar um dado na sua base de dados
+async function encontrarFuncionario() {
+    const funcionario = await user.find({ name: "Mikeeee Guedes" });
+    if (funcionario.length === 0) {          // Se nenhum documento for encontrado, o array será vazio, ou seja, terá um comprimento de zero
+      console.log("Não existe esse dado no seu banco de dados.");
+    } else {
+      console.log(funcionario);
+    }
+  }
+  
+  encontrarFuncionario();
+  
+  
 
 
 
