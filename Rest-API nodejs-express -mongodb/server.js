@@ -1,16 +1,18 @@
-require('dotenv').config()     // requerer o npm dotenv para acessar aos ficheiros que estao no .env
+require("dotenv").config(); // requerer o npm dotenv para acessar aos ficheiros que estao no .env
 
-const express=require("express")
-const app=express()
-const mongoose=require("mongoose")
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.DATABASE_URL)    // conexao ao mongoose usando o URL guardado no ficheiro .env
+mongoose
+  .connect(process.env.DATABASE_URL) // conexao ao mongoose usando o URL guardado no ficheiro .env
 
-.then(()=>console.log("Mongo db conectado correctamente"))
-.catch(err=>console.error("Connection failed"))
+  .then(() => console.log("Mongo db conectado"))
+  .catch((err) => console.error("Connection failed"));
 
+app.use(express.json());
 
-app.listen(3009,() => console.log("Servidor iniciado na porta 3009"))  // iniciar servidor na porta 3009
+const subscribersRouter = require("./routes/subscribers");
+app.use("/subscribers", subscribersRouter);
 
-
-
+app.listen(3009, () => console.log("Servidor iniciado na porta 3009")); // iniciar servidor na porta 3009

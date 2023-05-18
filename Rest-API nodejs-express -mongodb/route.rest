@@ -1,0 +1,10 @@
+GET http://localhost:3009/subscribers
+
+###
+POST http://localhost:3009/subscribers
+Content-Type: application/json
+
+{
+    "name": "Miguel Guedes",
+    "subscribedToChannel": "Canal Dev Master"
+}
